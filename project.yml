@@ -1,0 +1,51 @@
+name: UnitTest_Sample
+
+options:
+  xcodeVersion: 15.2
+
+settings:
+  base:
+    CODE_SIGN_STYLE: Manual
+    SWIFT_VERSION: 5
+
+targets:
+  UnitTest_Sample:
+    type: application
+    sources:
+      - Sources
+    platform: iOS
+    deploymentTarget: 13.0
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        PRODUCT_BUNDLE_IDENTIFIER: com.osmanyildirim.UnitTest-Sample
+      
+    scheme:
+      commandLineArguments:
+        -FIRDebugEnabled: true
+      environmentVariables:
+        OS_ACTIVITY_MODE: disable
+      testTargets:
+        - UnitTest_SampleTests
+
+    postbuildScripts:
+      - script: >
+          export PATH="$PATH:/opt/homebrew/bin"
+
+          if which swiftlint > /dev/null; then
+            swiftlint
+          else
+            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+          fi
+        name: SwiflLint
+  UnitTest_SampleTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: 13.0
+    sources: [Tests]
+    dependencies:
+      - target: UnitTest_Sample
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.osmanyildirim.UnitTest-Sample.unittest
+        GENERATE_INFOPLIST_FILE: true
