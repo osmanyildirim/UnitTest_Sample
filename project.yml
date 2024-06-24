@@ -27,6 +27,9 @@ targets:
         OS_ACTIVITY_MODE: disable
       testTargets:
         - UnitTest_SampleTests
+      testPlans:
+        - path: TestPlans/TestPlan.xctestplan
+          defaultPlan: true
 
     postbuildScripts:
       - script: >
@@ -42,7 +45,7 @@ targets:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: 13.0
-    sources: [Tests]
+    sources: [Tests, TestPlans]
     dependencies:
       - target: UnitTest_Sample
     settings:

@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "31F2E4FB-18D6-4C8F-BE32-C676C4394DBA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "CacheManagerTests",
+        "ImageFetcherTests",
+        "MockDataProviderTests",
+        "OHHTTPStubsTests",
+        "PokemonsServiceTests",
+        "PokemonsViewControllerTests",
+        "PokemonsViewModelTests",
+        "ResourceManagerTests",
+        "StoreManagerTests"
+      ],
+      "target" : {
+        "containerPath" : "container:UnitTest_Sample.xcodeproj",
+        "identifier" : "B187F0F65AD649441C81D70D",
+        "name" : "UnitTest_SampleTests"
+      }
+    }
+  ],
+  "version" : 1
+}
